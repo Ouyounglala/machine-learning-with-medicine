@@ -1,5 +1,11 @@
 # RNA & smallRNA Analysis Pipeline: Clustering, Differential Expression, and Pathway Enrichment
 
+
+## Contents
+- [Project Overview](#project-overview)
+- [Data Folder Overview](#data-folder-overview)
+
+
 ## Project Overview
 
 This project implements a complete analysis pipeline for two GEO datasets:
