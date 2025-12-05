@@ -263,9 +263,9 @@ map differential miRNAs to target mRNAs using reference/mirna_target_human.csv;
 
 run GO-BP enrichment on the target mRNA gene lists.
 
+---
 
-
-# 中文速记
+## 中文速记
 
 raw/：原始表达矩阵（GEO 下载后整理过的 counts）。
 
