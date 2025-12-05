@@ -3,13 +3,13 @@
 
 # Contents
 - [Project Overview](#project-overview)
-- [Data Folder Overview](#data-folder-overview)
 - [Installations](#installations)
+- [Full Pipeline Overview](#Full-Pipeline-Overview)
+- [Data Folder Overview](#data-folder-overview)
 - [Quick Start](#quick-start)
 - [Datasets](#datasets)
 - [Tasks \& Baselines](#tasks--baselines)
 - [References](#references)
-- [中文速记](#中文速记)
 
 
 # Project Overview
@@ -28,7 +28,75 @@ The pipeline performs four major steps:
 
 All intermediate and final outputs — clustering labels, DEG tables, gene lists, and pathway enrichment results — are saved under a structured `data/` directory.
 
+
+# Installation
+
+## 1. Clone the repository
+```bash
+git clone https://github.com/TIARE006/machine-learning-with-medicine
+cd machine-learning-with-medicine
+```
+
+## Step 2. Set up the environment:
+```bash
+# Set up the environment
+conda create -n mlomics python=3.14.0
+conda activate 
+```
+
+## Step 3. Install requirements:
+```bash
+pip install -r requirements.txt
+```
+
+## Step 4. Download datasets:
+```bash
+# Option 1: automatically download GEO datasets
+python scripts/download_data.py
+
+# Option 2: manually download from GEO
+# GSE254877: RNA-seq
+# GSE254878: small RNA-seq
+```
+
+
+# Full Pipeline Overview
+
+The script `run_full_pipeline.py` performs the complete multiomics workflow:
+
 ---
+
+## 1. Clustering (SNF)
+- Reads multi-omics matrices
+- Performs Similarity Network Fusion
+- Outputs cluster assignments
+
+## 2. Differential Expression Analysis (DEG)
+- Computes DEGs using multiple thresholds:
+  - Full list
+  - Strict threshold
+  - Relaxed threshold
+  - Top N genes
+- Outputs DEG tables for each comparison
+
+## 3. miRNA Target Mapping (smallRNA-seq only)
+- Maps differential miRNAs to target mRNAs
+- Generates up-/down-regulated target lists
+
+## 4. GO Biological Process Enrichment
+- GO-BP enrichment for:
+  - RNA-seq DEGs
+  - miRNA-derived target genes
+- Saves enriched pathway tables
+
+## 5. Final structured output
+All results are saved under `data/<DATA_TYPE>/integrated_results/`
+
+
+
+
+
+
 
 # Data Folder Overview
 
@@ -304,16 +372,4 @@ run GO-BP enrichment on the target mRNA gene lists.
 
 ---
 
-# 中文速记
 
-raw/：原始表达矩阵（GEO 下载后整理过的 counts）。
-
-clustering/：聚类结果（Sample_ID + Cluster），后面所有 DEG 都基于这个分组。
-
-deg/：差异分析结果（全表、严格阈值、宽松阈值、Top N、上下调列表）。
-
-pathway/：GO Biological Process 富集结果（直接基因，或者 smallRNA 映射后的靶基因）。
-
-targets/：smallRNA → mRNA 的靶基因列表（只对 small RNA-seq 有意义）。
-
-reference/：用来构建 smallRNA→靶点映射的参考数据库文件。
