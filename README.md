@@ -82,7 +82,45 @@ data/
     ├── gene_attribute_edges.txt.gz
     └── mirna_target_human.csv
 
-Folder-by-folder description
+```
+
+## Project Structure
+
+```
+MACHINE-LEARNING-WITH-...
+
+├── config/
+│   └── settings.yaml                 # 项目参数配置
+
+├── data/
+│   ├── integrated_results/           # 整合分析结果
+│   ├── lncRNA-seq/                   # lncRNA 数据
+│   ├── reference/                    # 参考数据库（miRNA/基因映射等）
+│   ├── RNA-seq/                      # RNA-seq 数据
+│   └── small RNA-seq/                # small RNA 数据
+│
+│   └── DOE_Cachexia Molecular Typing.md  # 说明文档（命名中含空格）
+
+├── R/
+│   └── run_deseq2_by_snf.R           # R 语言差异分析脚本
+
+├── scripts/
+│   ├── cluster_analysis_singleomics.py   # 单组学聚类分析
+│   └── run_full_pipeline.py              # 全流程分析脚本
+
+├── src/
+│   ├── __pycache__/                      # Python 缓存文件
+│   ├── __init__.py                       # 包初始化
+│   ├── methods_utils.py                  # 工具函数
+│   └── multiomics_snf_v2.py              # SNF 多组学算法实现
+
+└── README.md                              # 项目文档
+```
+
+
+
+## Folder-by-folder description
+
 1. small RNA-seq/
 raw/
 
@@ -263,7 +301,7 @@ For small RNA-seq:
 map differential miRNAs to target mRNAs using reference/mirna_target_human.csv;
 
 run GO-BP enrichment on the target mRNA gene lists.
-```
+
 ---
 
 # 中文速记
