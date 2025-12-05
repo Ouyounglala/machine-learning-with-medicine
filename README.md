@@ -9,6 +9,7 @@
 - [Datasets](#datasets)
 - [Tasks \& Baselines](#tasks--baselines)
 - [References](#references)
+- [中文速记](#中文速记)
 
 
 # Project Overview
@@ -262,10 +263,10 @@ For small RNA-seq:
 map differential miRNAs to target mRNAs using reference/mirna_target_human.csv;
 
 run GO-BP enrichment on the target mRNA gene lists.
-
+```
 ---
 
-## 中文速记
+# 中文速记
 
 raw/：原始表达矩阵（GEO 下载后整理过的 counts）。
 
